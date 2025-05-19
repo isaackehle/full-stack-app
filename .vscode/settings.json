@@ -1,5 +1,6 @@
 {
   "editor.formatOnSave": true,
   "prettier.printWidth": 132,
-  "prettier.proseWrap": "always"
+  "prettier.proseWrap": "always",
+  "eslint.format.enable": true
 }
