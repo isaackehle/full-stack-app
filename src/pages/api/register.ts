@@ -8,7 +8,7 @@ const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
-    const { username, email, password } = req.body;
+    const { username, email, password, firstName = "", lastName = "" } = req.body;
 
     // Hash the password
     const hashedPassword = await bcrypt.hash(password, 10);
@@ -20,6 +20,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
           username,
           email,
           password: hashedPassword,
+          firstName,
+          lastName,
         },
       });
 

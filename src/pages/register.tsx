@@ -6,6 +6,8 @@ import "../app/globals.css";
 
 const Register = () => {
   const [username, setUsername] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
@@ -22,7 +24,7 @@ const Register = () => {
   };
 
   return (
-    <div className="mx-auto flex flex-col  max-w-xl items-center gap-x-4 rounded-xl bg-white p-6 shadow-sm outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
+    <div className="mx-auto flex flex-col max-w-2xl items-center gap-x-4 rounded-xl bg-white p-6 shadow-sm outline outline-black/5 dark:bg-slate-800 dark:shadow-none dark:-outline-offset-1 dark:outline-white/10">
       <div className="flex-4 pb-8">
         <h1 className="text-4xl font-extrabold dark:text-white">Register</h1>
       </div>
@@ -54,6 +56,28 @@ const Register = () => {
             </label>
 
             <label className="flex-4">
+              <span className="w-xs pl-2 pr-6 py-8">First Name:</span>
+              <input
+                type="text"
+                className="border-2 border-solid rounded-sm w-2xs"
+                value={firstName}
+                onChange={(e) => setFirstName(e.target.value)}
+                required
+              />
+            </label>
+
+            <label className="flex-4">
+              <span className="w-xs pl-2 pr-6 py-8">Last Name:</span>
+              <input
+                type="text"
+                className="border-2 border-solid rounded-sm w-2xs"
+                value={lastName}
+                onChange={(e) => setLastName(e.target.value)}
+                required
+              />
+            </label>
+
+            <label className="flex-4">
               <span className="w-xs pl-2 pr-6 py-8">Password:</span>
               <input
                 type="password"
@@ -63,11 +87,13 @@ const Register = () => {
                 required
               />
             </label>
-          </div>
 
-          <button className="border-2 border-solid rounded-sm" type="submit">
-            Register
-          </button>
+            <div className="flex-12">
+              <button className="border-2 border-solid rounded-sm w-40 bg-red-50" type="submit">
+                Do it!
+              </button>
+            </div>
+          </div>
         </form>
       </div>
     </div>
