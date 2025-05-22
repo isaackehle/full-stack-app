@@ -8,21 +8,15 @@ const prisma = new PrismaClient();
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
   if (req.method === "POST") {
-    const { username, email, password, firstName = "", lastName = "" } = req.body;
+    const { username, email, password: raw_password, firstName = "", lastName = "" } = req.body;
 
     // Hash the password
-    const hashedPassword = await bcrypt.hash(password, 10);
+    const password = await bcrypt.hash(raw_password, 10);
 
     // Create a new user in the database
     try {
       const user = await prisma.user.create({
-        data: {
-          username,
-          email,
-          password: hashedPassword,
-          firstName,
-          lastName,
-        },
+        data: { username, email, password, firstName, lastName },
       });
 
       res.status(201).json(user);
